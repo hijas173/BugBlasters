@@ -9,7 +9,7 @@ public class Book implements Serializable { //'book' changed to "Book", because 
 	private String callNo; //'CALLNO' changed to 'callNo',variable name should start with lowercase letter and to be in camelCase.
 	private int bookId;  //'ID' changed to 'bookId', because variable name should be meaningful
 	
-	private enum STATE { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
+	private enum State { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };//'STATE' changed to 'State'
 	private STATE State;
 	
 	
