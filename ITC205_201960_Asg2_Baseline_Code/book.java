@@ -2,12 +2,12 @@ import java.io.Serializable;
 
 
 @SuppressWarnings("serial")
-public class book implements Serializable {
+public class Book implements Serializable { //'book' changed to "Book", because class name is to start with uppercase letter.
 	
-	private String TITLE;
-	private String AUTHOR;
-	private String CALLNO;
-	private int ID;
+	private String title; //'TITLE' changed to 'title',variable name should start with lowercase
+	private String author; //'AUTHOR' changed to 'author',variable name should start with lowercase
+	private String callNo; //'CALLNO' changed to 'callNo',variable name should start with lowercase letter and to be in camelCase.
+	private int bookId;  //'ID' changed to 'bookId', because variable name should be meaningful
 	
 	private enum STATE { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
 	private STATE State;
