@@ -9,16 +9,18 @@ public class Book implements Serializable { //'book' changed to "Book", because 
 	private String callNo; //'CALLNO' changed to 'callNo',variable name should start with lowercase letter and to be in camelCase.
 	private int bookId;  //'ID' changed to 'bookId', because variable name should be meaningful
 	
-	private enum State { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };//'STATE' changed to 'State'
-	private STATE State;
+	private enum State { 
+		AVAILABLE, ON_LOAN, DAMAGED, RESERVED
+	} //1. 'STATE' changed to 'State' 2.delete ';' 3. modify the block format
+	private State state;//'STATE' changed to 'State', 'State' changed to 'state', State instance name should start with lowercase letter
 	
-	
-	public book(String author, String title, String callNo, int id) {
-		this.AUTHOR = author;
-		this.TITLE = title;
-		this.CALLNO = callNo;
-		this.ID = id;
-		this.State = STATE.AVAILABLE;
+	public Book()(); //add a default(no arg) constructor for Book class
+	public Book(String author, String title, String callNo, int id) {//'book' changed to Book, constructor name should be the same with class name
+		this.author = author;//'AUTHOR' changed to 'author'
+		this.title = title;//'AUTHOR' changed to 'author'
+		this.callNo = callNo;//'CALLNO' changed to 'callNo'
+		this.bookId = id;//'ID' changed to 'bookId'
+		this.state = State.AVAILABLE;//'State' changed to 'state'
 	}
 	
 	public String toString() {
