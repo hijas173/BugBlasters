@@ -83,8 +83,8 @@ public class BorrowBookControl {
 		}
 		else {
 			borrowBookUi.Display("\nFinal Borrowing List");//'UI' changed to 'borrowBookUi'
-			for (book item : pendingBooks) {//'PENDING' changed to 'pendingBooks','B' changed to 'item'
-				borrowBookUi.Display(item.toString());//'UI' changed to 'borrowBookUi','B' changed to 'item'
+			for (book bookItem : pendingBooks) {//'PENDING' changed to 'pendingBooks','B' changed to 'bookItem'
+				borrowBookUi.Display(bookItem.toString());//'UI' changed to 'borrowBookUi','B' changed to 'bookItem'
 			}
 			completedBooks = new ArrayList<loan>();//'COMPLETED' changed to 'completedBooks'
 			borrowBookUi.setState(BorrowBookUI.UiState.FINALISING);//'UI' changed to 'borrowBookUi','Set_State' changed to 'setState','UI_STATE' changed to 'UiState'
@@ -93,20 +93,20 @@ public class BorrowBookControl {
 	}
 
 
-	public void Commit_LOans() {
-		if (!controlState.equals(CONTROL_STATE.FINALISING)) {//'State' changed to 'controlState'
+	public void commitLoans() {//'Commit_LOans' changed to 'commitLoans'
+		if (!controlState.equals(ControlState.FINALISING)) {//'State' changed to 'controlState','CONTROL_STATE' changed to 'ControlState'
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
 		}	
-		for (book B : PENDING) {
-			loan LOAN = LIBRARY.ISSUE_LAON(B, M);
-			COMPLETED.add(LOAN);			
+		for (book bookItem : pendingBooks) {//'PENDING' changed to 'pendingBooks','B' changed to 'bookItem'
+			Loan loan = LIBRARY.issueLoan(bookItem, member);//'loan' changed to 'Loan','LOAN' changed to 'loan','LIBRARY' changed to 'Library','ISSUE_LAON' changed to 'issueLoan','B' changed to 'bookItem','M' changed to 'member'
+			completedBooks.add(loan);//'COMPLETED' changed to 'completedBooks'			
 		}
-		UI.Display("Completed Loan Slip");
-		for (loan LOAN : COMPLETED) {
-			UI.Display(LOAN.toString());
+		borrowBookUi.Display("Completed Loan Slip");//'UI' changed to 'borrowBookUi'
+		for (Loan itemLoan : completedBooks) {//'loan' changed to 'Loan','LOAN' changed to 'itemLoan','COMPLETED' changed to 'completedBooks'
+			borrowBookUi.Display(itemLoan.toString());//'UI' changed to 'borrowBookUi'
 		}
-		UI.Set_State(BorrowBookUI.UI_STATE.COMPLETED);
-		controlState = CONTROL_STATE.COMPLETED;//'State' changed to 'controlState'
+		borrowBookUi.setState(BorrowBookUI.UiState.COMPLETED);//'UI' changed to 'borrowBookUi','Set_State' changed to 'setState','UI_STATE' changed to 'UiState'
+		controlState = ControlState.COMPLETED;//'State' changed to 'controlState','CONTROL_STATE' changed to 'ControlState'
 	}
 
 	
