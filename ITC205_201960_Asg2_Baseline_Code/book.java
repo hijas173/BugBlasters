@@ -20,7 +20,7 @@ public class Book implements Serializable { //'book' changed to "Book", because 
 		this.title = title;//'AUTHOR' changed to 'author'
 		this.callNo = callNo;//'CALLNO' changed to 'callNo'
 		this.bookId = id;//'ID' changed to 'bookId'
-		this.state = State.AVAILABLE;//'State' changed to 'state'
+		this.state = state.AVAILABLE;//'State' changed to 'state'
 	}
 	
 	public String toString() {
@@ -34,18 +34,16 @@ public class Book implements Serializable { //'book' changed to "Book", because 
 		return sb.toString();
 	}
 
-	public Integer ID() {
-		return ID;
+	public int getBookId() {//'Integer' changed to 'int', 'ID' changed to 'getBookId'
+		return bookId;// 'ID' changed to 'bookId'
 	}
 
-	public String TITLE() {
-		return TITLE;
+	public String getTitle() {//'TITLE' changed to 'getTitle'
+		return title;// 'TITLE' changed to 'title'
 	}
-
-
 	
-	public boolean AVAILABLE() {
-		return State == STATE.AVAILABLE;
+	public boolean idAvailable() {//'AVAILABLE' changed to 'idAvailable'
+		return state == state.AVAILABLE;// 'TITLE' changed to 'title','State' changed to 'state','STATE' changed to 'state'
 	}
 
 	
