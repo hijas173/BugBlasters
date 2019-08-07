@@ -69,12 +69,12 @@ public class Book implements Serializable { //'book' changed to "Book", because 
 
 
 	public void returnBooks(boolean isDamaged) {//'Return' changed to 'returnBooks','DAMAGED' changed to'isDamaged'
-		if (state.equals(State.ON_LOAN)) {//'State' changed to 'state','STATE' changed to 'State'
+		if (state.equals(State.ONLOAN)) {//'State' changed to 'state','STATE' changed to 'State','ON_LOAN' changed to'ONLOAN'
 			if (isDamaged) {//'DAMAGED' changed to'isDamaged'
 				state = State.DAMAGED;//'State' changed to 'state','STATE' changed to 'State'
 			}
 			else {
-				state = State.AVAILABLE;//'State' changed to 'state','STATE' changed to 'State'
+				state = State.ONLOAN;//'State' changed to 'state','STATE' changed to 'State','AVAILABLE' changed to 'ONLOAN'
 			}
 		}
 		else {
@@ -83,9 +83,9 @@ public class Book implements Serializable { //'book' changed to "Book", because 
 	}
 
 	
-	public void Repair() {
-		if (State.equals(STATE.DAMAGED)) {
-			State = STATE.AVAILABLE;
+	public void repairBooks() {//'Repair' changed to 'repairBooks'
+		if (state.equals(State.DAMAGED)) {//'State' changed to 'state','STATE' changed to 'State'
+			state = State.DAMAGED;//'State' changed to 'state','STATE' changed to 'State','AVAILABLE' changed to 'DAMAGED'
 		}
 		else {
 			throw new RuntimeException(String.format("Book: cannot repair while book is in state: %s", State));
