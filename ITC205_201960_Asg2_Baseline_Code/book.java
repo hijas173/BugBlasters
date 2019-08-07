@@ -20,7 +20,7 @@ public class Book implements Serializable { //'book' changed to "Book", because 
 		this.title = title;//'AUTHOR' changed to 'author'
 		this.callNo = callNo;//'CALLNO' changed to 'callNo'
 		this.bookId = id;//'ID' changed to 'bookId'
-		this.state = state.AVAILABLE;//'State' changed to 'state'
+		this.state = State.AVAILABLE;//'State' changed to 'state'
 	}
 	
 	public String toString() {
@@ -43,17 +43,17 @@ public class Book implements Serializable { //'book' changed to "Book", because 
 	}
 	
 	public boolean idAvailable() {//'AVAILABLE' changed to 'idAvailable'
-		return state == state.AVAILABLE;// 'TITLE' changed to 'title','State' changed to 'state','STATE' changed to 'state'
+		return state == State.AVAILABLE;// 'TITLE' changed to 'title','State' changed to 'state',,'STATE' changed to 'State'
 	}
 
 	
 	public boolean isOnLoan() {//'On_loan' changed to 'isOnLoan'
-		return state == state.ONLOAN;//'State' changed to 'state','STATE' changed to 'state','ON_LOAN' changed to 'ONLOAN' 
+		return state == State.ONLOAN;//'State' changed to 'state','STATE' changed to 'State','ON_LOAN' changed to 'ONLOAN' 
 	}
 
 	
 	public boolean isDamaged() {//'IS_Damaged' changed to 'isDamaged'
-		return state == state.DAMAGED;//'State' changed to 'state','STATE' changed to 'state'
+		return state == State.DAMAGED;//'State' changed to 'state','STATE' changed to 'State'
 	}
 
 	
