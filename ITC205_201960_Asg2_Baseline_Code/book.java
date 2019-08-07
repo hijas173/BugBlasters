@@ -68,17 +68,17 @@ public class Book implements Serializable { //'book' changed to "Book", because 
 	}
 
 
-	public void Return(boolean DAMAGED) {
-		if (State.equals(STATE.ON_LOAN)) {
-			if (DAMAGED) {
-				State = STATE.DAMAGED;
+	public void returnBooks(boolean isDamaged) {//'Return' changed to 'returnBooks','DAMAGED' changed to'isDamaged'
+		if (state.equals(State.ON_LOAN)) {//'State' changed to 'state','STATE' changed to 'State'
+			if (isDamaged) {//'DAMAGED' changed to'isDamaged'
+				state = State.DAMAGED;//'State' changed to 'state','STATE' changed to 'State'
 			}
 			else {
-				State = STATE.AVAILABLE;
+				state = State.AVAILABLE;//'State' changed to 'state','STATE' changed to 'State'
 			}
 		}
 		else {
-			throw new RuntimeException(String.format("Book: cannot Return while book is in state: %s", State));
+			throw new RuntimeException(String.format("Book: cannot Return while book is in state: %s", state));//'State' changed to 'state'
 		}		
 	}
 
