@@ -79,16 +79,16 @@ public class BorrowBookControl {
 	
 	public void borrowComplete() {//'Complete' changed to 'borrowComplete'
 		if (pendingBooks.size() == 0) {//'PENDING' changed to 'pendingBooks'
-			cancel();
+			borrowCancel();//'cancel' changed to 'borrowCancel'
 		}
 		else {
-			UI.Display("\nFinal Borrowing List");
-			for (book B : PENDING) {
-				UI.Display(B.toString());
+			borrowBookUi.Display("\nFinal Borrowing List");//'UI' changed to 'borrowBookUi'
+			for (book item : pendingBooks) {//'PENDING' changed to 'pendingBooks','B' changed to 'item'
+				borrowBookUi.Display(item.toString());//'UI' changed to 'borrowBookUi','B' changed to 'item'
 			}
-			COMPLETED = new ArrayList<loan>();
-			UI.Set_State(BorrowBookUI.UI_STATE.FINALISING);
-			controlState = CONTROL_STATE.FINALISING;//'State' changed to 'controlState'
+			completedBooks = new ArrayList<loan>();//'COMPLETED' changed to 'completedBooks'
+			borrowBookUi.setState(BorrowBookUI.UiState.FINALISING);//'UI' changed to 'borrowBookUi','Set_State' changed to 'setState','UI_STATE' changed to 'UiState'
+			controlState = ControlState.FINALISING;//'State' changed to 'controlState','CONTROL_STATE' changed to 'ControlState'
 		}
 	}
 
@@ -110,7 +110,7 @@ public class BorrowBookControl {
 	}
 
 	
-	public void cancel() {
+	public void borrowCancel() {//'cancel' changed to 'borrowCancel'
 		UI.Set_State(BorrowBookUI.UI_STATE.CANCELLED);
 		controlState = CONTROL_STATE.CANCELLED;//'State' changed to 'controlState'
 	}
