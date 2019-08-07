@@ -52,33 +52,33 @@ public class BorrowBookControl {
 	}//bracketing style keep consistent
 	
 	
-	public void Scanned(int bookId) {
-		BOOK = null;
-		if (!controlState.equals(CONTROL_STATE.SCANNING)) {//'State' changed to 'controlState'
+	public void bookScanned(int bookId) {//'Scanned' changed to 'bookScanned'
+		book = null;//'BOOK' changed to 'book'
+		if (!controlState.equals(ControlState.SCANNING)) {//'State' changed to 'controlState','CONTROL_STATE' changed to 'ControlState'
 			throw new RuntimeException("BorrowBookControl: cannot call bookScanned except in SCANNING state");
 		}	
-		BOOK = LIBRARY.Book(bookId);
-		if (BOOK == null) {
-			UI.Display("Invalid bookId");
+		book = Library.getBook(bookId);//'BOOK' changed to 'book','LIBRARY' changed to 'Library','Book' changed to 'getBook'
+		if (book == null) {//'BOOK' changed to 'book'
+			borrowBookUi.Display("Invalid bookId");//'UI' changed to 'borrowBookUi'
 			return;
 		}
-		if (!BOOK.AVAILABLE()) {
-			UI.Display("Book cannot be borrowed");
+		if (!book.idAvailable()) {//'BOOK' changed to 'book','AVAILABLE' changed to 'idAvailable'
+			borrowBookUi.Display("Book cannot be borrowed");//'UI' changed to 'borrowBookUi'
 			return;
 		}
-		PENDING.add(BOOK);
-		for (book B : PENDING) {
-			UI.Display(B.toString());
+		pendingBooks.add(book);//'PENDING' changed to 'pendingBooks','BOOK' changed to 'book'
+		for (book item : pendingBooks) {//'PENDING' changed to 'pendingBooks','B' changed to 'item'
+			borrowBookUi.Display(item.toString());//'UI' changed to 'borrowBookUi','B' changed to 'item'
 		}
-		if (LIBRARY.Loans_Remaining_For_Member(M) - PENDING.size() == 0) {
-			UI.Display("Loan limit reached");
-			Complete();
+		if (Library.loansRemainingForMember(member) - pendingBooks.size() == 0) {//'LIBRARY' changed to 'Library','Loans_Remaining_For_Member' changed to 'loansRemainingForMember','M' changed to 'member','PENDING' changed to 'pendingBooks'
+			borrowBookUi.Display("Loan limit reached");//'UI' changed to 'borrowBookUi'
+			borrowComplete();//'Complete' changed to 'borrowComplete'
 		}
 	}
 	
 	
-	public void Complete() {
-		if (PENDING.size() == 0) {
+	public void borrowComplete() {//'Complete' changed to 'borrowComplete'
+		if (pendingBooks.size() == 0) {//'PENDING' changed to 'pendingBooks'
 			cancel();
 		}
 		else {
