@@ -7,7 +7,6 @@ public class BorrowBookControl {
 	private Member member; //'member' changed to 'Member','M' changed to 'member'
 	private enum ControlState {INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED};//'CONTROL_STATE' changed to 'ControlState', delete the white spance	
 	private ControlState controlState;//'CONTROL_STATE' changed to 'ControlState','State' changed to 'controlState'
-	
 	private List<Book> pendingBooks; //'PENDING' changed to 'pendingBooks','book' changed to 'Book'
 	private List<Loan> completedBooks;//'COMPLETED' changed to 'completedBooks','loan' changed to 'Loan'
 	private Book book; //'book' changed to 'Book','BOOK' changed to 'book'
@@ -24,17 +23,19 @@ public class BorrowBookControl {
 		controlState = ControlState.READY;	//'State' changed to 'controlState','CONTROL_STATE' changed to 'ControlState'	
 	}
 	public void cardSwiped(int memberId) {//'Swiped' changed to 'cardSwiped','MEMMER_ID' changed to 'memberId'
-		if (!controlState.equals(ControlState.READY)) //'State' changed to 'controlState','CONTROL_STATE' changed to 'ControlState'
+		if (!controlState.equals(ControlState.READY)){ //'State' changed to 'controlState','CONTROL_STATE' changed to 'ControlState'
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
-		member = Library.getMember(memberId);//'M' changed to 'member','LIBRARY' changed to 'Library','MEMBER' changed to 'getMember','MEMMER_ID' changed to 'memberId'
+		}//add the consistent bracketing style
+			member = Library.getMember(memberId);//'M' changed to 'member','LIBRARY' changed to 'Library','MEMBER' changed to 'getMember','MEMMER_ID' changed to 'memberId'
 		if (member == null) {//'M' changed to 'member'
 			borrowBookUi.Display("Invalid memberId");//'UI' changed to 'borrowBookUi'
 			return;
 		}
-		if (LIBRARY.memberCanBorrow(member)) {//'LIBRARY' changed to 'Library','MEMBER_CAN_BORROW' changed to 'memberCanBorrow','M' changed to 'member'
+		if (Library.memberCanBorrow(member)) {//'LIBRARY' changed to 'Library','MEMBER_CAN_BORROW' changed to 'memberCanBorrow','M' changed to 'member'
 			pendingBooks = new ArrayList<>();//'PENDING' changed to 'pendingBooks'
 			borrowBookUi.setState(BorrowBookUI.UiState.SCANNING);//'UI' changed to 'borrowBookUi','Set_State' changed to 'setState','UI_STATE' changed to 'UiState'
-			controlState = ControlState.SCANNING; }//'State' changed to 'controlState','CONTROL_STATE' changed to 'ControlState'
+			controlState = ControlState.SCANNING; //'State' changed to 'controlState','CONTROL_STATE' changed to 'ControlState'
+		}// modify the consistent bracketing style
 		else 
 		{
 			borrowBookUi.Display("Member cannot borrow at this time");//'UI' changed to 'borrowBookUi'
