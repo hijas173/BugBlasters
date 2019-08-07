@@ -15,7 +15,7 @@ public class Book implements Serializable { //'book' changed to "Book", because 
 	private State state;//'STATE' changed to 'State', 'State' changed to 'state', State instance name should start with lowercase letter
 	
 	public Book()(); //add a default(no arg) constructor for Book class
-	public Book(String author, String title, String callNo, int id) {//'book' changed to Book, constructor name should be the same with class name
+	public Book(String author, String title, String callNo, int id) {//'book' changed to 'Book', constructor name should be the same with class name
 		this.author = author;//'AUTHOR' changed to 'author'
 		this.title = title;//'AUTHOR' changed to 'author'
 		this.callNo = callNo;//'CALLNO' changed to 'callNo'
@@ -24,14 +24,14 @@ public class Book implements Serializable { //'book' changed to "Book", because 
 	}
 	
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("Book: ").append(ID).append("\n")
-		  .append("  Title:  ").append(TITLE).append("\n")
-		  .append("  Author: ").append(AUTHOR).append("\n")
-		  .append("  CallNo: ").append(CALLNO).append("\n")
-		  .append("  State:  ").append(State);
+		StringBuilder strBuilder = new StringBuilder();//'sb' changed to 'strBuilder'
+		strBuilder.append("  Book: ").append(bookId).append("\n");//'sb' changed to 'strBuilder','ID' changed to 'bookId', add ';' in the end of line,'Book:'changed to '  Book:'
+		strBuilder.append("  Title:  ").append(title).append("\n");//add 'strBuilder' before the first'.','TITLE' changed to 'title', add ';' in the end of line
+		strBuilder.append("  Author: ").append(author).append("\n");//add 'strBuilder' before the first'.','AUTHOR' changed to 'author', add ';' in the end of line
+		strBuilder.append("  CallNo: ").append(callNo).append("\n");//add 'strBuilder' before the first'.','CALLNO' changed to 'callNo', add ';' in the end of line
+		strBuilder.append("  State:  ").append(state);//add 'strBuilder' before the first'.','State' changed to 'state'
 		
-		return sb.toString();
+		return strBuilder.toString();//'sb' changed to 'strBuilder'
 	}
 
 	public int getBookId() {//'Integer' changed to 'int', 'ID' changed to 'getBookId'
