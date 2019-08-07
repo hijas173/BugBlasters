@@ -10,8 +10,8 @@ public class Book implements Serializable { //'book' changed to "Book", because 
 	private int bookId;  //'ID' changed to 'bookId', because variable name should be meaningful
 	
 	private enum State { 
-		AVAILABLE, ON_LOAN, DAMAGED, RESERVED
-	} //1. 'STATE' changed to 'State' 2.delete ';' 3. modify the block format
+		AVAILABLE, ONLOAN, DAMAGED, RESERVED  
+	} //1. 'STATE' changed to 'State' 2.delete ';' 3. modify the block format 4.'ON_LOAN' changed to 'ONLOAN' 
 	private State state;//'STATE' changed to 'State', 'State' changed to 'state', State instance name should start with lowercase letter
 	
 	public Book()(); //add a default(no arg) constructor for Book class
@@ -47,13 +47,13 @@ public class Book implements Serializable { //'book' changed to "Book", because 
 	}
 
 	
-	public boolean On_loan() {
-		return State == STATE.ON_LOAN;
+	public boolean isOnLoan() {//'On_loan' changed to 'isOnLoan'
+		return state == state.ONLOAN;//'State' changed to 'state','STATE' changed to 'state','ON_LOAN' changed to 'ONLOAN' 
 	}
 
 	
-	public boolean IS_Damaged() {
-		return State == STATE.DAMAGED;
+	public boolean isDamaged() {//'IS_Damaged' changed to 'isDamaged'
+		return state == state.DAMAGED;//'State' changed to 'state','STATE' changed to 'state'
 	}
 
 	
