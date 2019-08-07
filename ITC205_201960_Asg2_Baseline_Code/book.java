@@ -57,7 +57,7 @@ public class Book implements Serializable { //'book' changed to "Book", because 
 	}
 
 	
-	public void Borrow() {
+	public void borrowBooks() {//'Borrow' changed to 'borrowBooks' method name should be meaningful, and start with a lowercase letter and to be in camelBack.
 		if (State.equals(STATE.AVAILABLE)) {
 			State = STATE.ON_LOAN;
 		}
