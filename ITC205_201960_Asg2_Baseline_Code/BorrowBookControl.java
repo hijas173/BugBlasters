@@ -3,7 +3,7 @@ import java.util.List;
 
 public class BorrowBookControl {
 	
-	private BorrowBookUI UI; //'UI' changed to 'borrowBookUi'
+	private BorrowBookUI borrowBookUi; //'UI' changed to 'borrowBookUi'
 	
 	private Library library; //'library' changed to 'Library','LIBRARY' changed to 'library' 
 	private Member member; //'member' changed to 'Member','M' changed to 'member'
@@ -22,12 +22,12 @@ public class BorrowBookControl {
 	
 
 	public void setUI(BorrowBookUI ui) {
-		if (!controlState.equals(CONTROL_STATE.INITIALISED)) //'State' changed to 'controlState'
+		if (!controlState.equals(ControlState.INITIALISED)) //'State' changed to 'controlState','CONTROL_STATE' changed to 'ControlState'
 			throw new RuntimeException("BorrowBookControl: cannot call setUI except in INITIALISED state");
 			
-		this.UI = ui;
-		ui.Set_State(BorrowBookUI.UI_STATE.READY);
-		controlState = CONTROL_STATE.READY;	//'State' changed to 'controlState'	
+		this.borrowBookUi = ui;//'UI' changed to 'borrowBookUi'
+		borrowBookUi.Set_State(BorrowBookUI.UiState.READY);//'UI' changed to 'borrowBookUi','UI_STATE' changed to 'UiState'
+		controlState = ControlState.READY;	//'State' changed to 'controlState','CONTROL_STATE' changed to 'ControlState'	
 	}
 
 		
