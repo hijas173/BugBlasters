@@ -31,23 +31,25 @@ public class BorrowBookControl {
 	}
 
 		
-	public void Swiped(int MEMMER_ID) {
-		if (!controlState.equals(CONTROL_STATE.READY)) //'State' changed to 'controlState'
+	public void cardSwiped(int memberId) {//'Swiped' changed to 'cardSwiped','MEMMER_ID' changed to 'memberId'
+		if (!controlState.equals(ControlState.READY)) //'State' changed to 'controlState','CONTROL_STATE' changed to 'ControlState'
 			throw new RuntimeException("BorrowBookControl: cannot call cardSwiped except in READY state");
 			
-		M = LIBRARY.MEMBER(MEMMER_ID);
-		if (M == null) {
-			UI.Display("Invalid memberId");
+		member = Library.getMember(memberId);//'M' changed to 'member','LIBRARY' changed to 'Library','MEMBER' changed to 'getMember','MEMMER_ID' changed to 'memberId'
+		if (member == null) {//'M' changed to 'member'
+			borrowBookUi.Display("Invalid memberId");//'UI' changed to 'borrowBookUi'
 			return;
 		}
-		if (LIBRARY.MEMBER_CAN_BORROW(M)) {
-			PENDING = new ArrayList<>();
-			UI.Set_State(BorrowBookUI.UI_STATE.SCANNING);
-			controlState = CONTROL_STATE.SCANNING; }//'State' changed to 'controlState'
+		if (LIBRARY.memberCanBorrow(member)) {//'LIBRARY' changed to 'Library','MEMBER_CAN_BORROW' changed to 'memberCanBorrow','M' changed to 'member'
+			pendingBooks = new ArrayList<>();//'PENDING' changed to 'pendingBooks'
+			borrowBookUi.setState(BorrowBookUI.UiState.SCANNING);//'UI' changed to 'borrowBookUi','Set_State' changed to 'setState','UI_STATE' changed to 'UiState'
+			controlState = ControlState.SCANNING; }//'State' changed to 'controlState','CONTROL_STATE' changed to 'ControlState'
 		else 
 		{
-			UI.Display("Member cannot borrow at this time");
-			UI.Set_State(BorrowBookUI.UI_STATE.RESTRICTED); }}
+			borrowBookUi.Display("Member cannot borrow at this time");//'UI' changed to 'borrowBookUi'
+			borrowBookUi.setState(BorrowBookUI.UiState.RESTRICTED); //'UI' changed to 'borrowBookUi','Set_State' changed to 'setState','UI_STATE' changed to 'UiState'
+		}
+	}//bracketing style keep consistent
 	
 	
 	public void Scanned(int bookId) {
