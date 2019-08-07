@@ -5,19 +5,19 @@ public class BorrowBookControl {
 	
 	private BorrowBookUI UI; //'UI' changed to 'borrowBookUi'
 	
-	private library LIBRARY; //'library' changed to 'Library','LIBRARY' changed to 'library' 
-	private member M; //'member' changed to 'Member','M' changed to 'member'
+	private Library library; //'library' changed to 'Library','LIBRARY' changed to 'library' 
+	private Member member; //'member' changed to 'Member','M' changed to 'member'
 	private enum ControlState {INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED};//'CONTROL_STATE' changed to 'ControlState', delete the white spance	
-	private CONTROL_STATE controlState;//'CONTROL_STATE' changed to 'ControlState','State' changed to 'controlState'
+	private ControlState controlState;//'CONTROL_STATE' changed to 'ControlState','State' changed to 'controlState'
 	
-	private List<book> pendingBooks; //'PENDING' changed to 'pendingBooks'
-	private List<loan> completedBooks;//'COMPLETED' changed to 'completedBooks'
-	private book BOOK;
+	private List<Book> pendingBooks; //'PENDING' changed to 'pendingBooks','book' changed to 'Book'
+	private List<Loan> completedBooks;//'COMPLETED' changed to 'completedBooks','loan' changed to 'Loan'
+	private Book book; //'book' changed to 'Book','BOOK' changed to 'book'
 	
 	
 	public BorrowBookControl() {
-		this.LIBRARY = LIBRARY.INSTANCE();
-		controlState = CONTROL_STATE.INITIALISED;//'State' changed to 'controlState'
+		this.library = Library.getInstance();//'LIBRARY' changed to 'library','LIBRARY' changed to 'Library','INSTANCE()' changed to 'getInstance()'
+		controlState = ControlState.INITIALISED;//'State' changed to 'controlState','CONTROL_STATE' changed to 'ControlState'
 	}
 	
 
