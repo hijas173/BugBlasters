@@ -3,19 +3,19 @@ import java.util.concurrent.TimeUnit;
 
 public class Calendar {
 	
-	private static Calendar SeLf;
-	private static java.util.Calendar CaLeNdAr;
+	private static Calendar self;//'SeLf' changed to 'self'
+	private static java.util.Calendar calendar;//'CaLeNdAr' changed to 'calendar'
 	
 	
 	private Calendar() {
-		CaLeNdAr = java.util.Calendar.getInstance();
+		calendar = java.util.Calendar.getInstance();//'CaLeNdAr' changed to 'calendar'
 	}
 	
-	public static Calendar INSTANCE() {
-		if (SeLf == null) {
-			SeLf = new Calendar();
+	public static Calendar getInstance() {//'INSTANCE' changed to 'getInstance'
+		if (self == null) {//'SeLf' changed to 'self'
+			self = new Calendar();//'SeLf' changed to 'self'
 		}
-		return SeLf;
+		return self;//'SeLf' changed to 'self'
 	}
 	
 	public void incrementDate(int days) {
