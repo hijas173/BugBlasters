@@ -58,11 +58,11 @@ public class Book implements Serializable { //'book' changed to "Book", because 
 
 	
 	public void borrowBooks() {//'Borrow' changed to 'borrowBooks' method name should be meaningful, and start with a lowercase letter and to be in camelBack.
-		if (State.equals(STATE.AVAILABLE)) {
-			State = STATE.ON_LOAN;
+		if (state.equals(State.AVAILABLE)) {//'State' changed to 'state','STATE' changed to 'State'
+			state = State.ONLOAN;//'State' changed to 'state','ON_LOAN' changed to 'ONLOAN' ,'STATE' changed to 'State'
 		}
 		else {
-			throw new RuntimeException(String.format("Book: cannot borrow while book is in state: %s", State));
+			throw new RuntimeException(String.format("Book: cannot borrow while book is in state: %s", state));//'State' changed to 'state'
 		}
 		
 	}
