@@ -19,28 +19,28 @@ public class Calendar {
 	}
 	
 	public void incrementDate(int days) {
-		CaLeNdAr.add(java.util.Calendar.DATE, days);		
+		calendar.add(java.util.Calendar.DATE, days);//'CaLeNdAr' changed to 'calendar'		
 	}
 	
-	public synchronized void Set_dATE(Date date) {
+	public synchronized void setDate(Date date) {//'Set_dATE' changed to 'setDate'	
 		try {
-			CaLeNdAr.setTime(date);
-	        CaLeNdAr.set(java.util.Calendar.HOUR_OF_DAY, 0);  
-	        CaLeNdAr.set(java.util.Calendar.MINUTE, 0);  
-	        CaLeNdAr.set(java.util.Calendar.SECOND, 0);  
-	        CaLeNdAr.set(java.util.Calendar.MILLISECOND, 0);
+			calendar.setTime(date);//'CaLeNdAr' changed to 'calendar'	
+			calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);  //modify the indentation,'CaLeNdAr' changed to 'calendar'
+			calendar.set(java.util.Calendar.MINUTE, 0);  //modify the indentation,'CaLeNdAr' changed to 'calendar'
+			calendar.set(java.util.Calendar.SECOND, 0);  //modify the indentation,'CaLeNdAr' changed to 'calendar'
+			calendar.set(java.util.Calendar.MILLISECOND, 0);//modify the indentation,'CaLeNdAr' changed to 'calendar'
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
 		}	
 	}
-	public synchronized Date Date() {
+	public synchronized Date getDate() {//'Date' changed to 'getDate'
 		try {
-	        CaLeNdAr.set(java.util.Calendar.HOUR_OF_DAY, 0);  
-	        CaLeNdAr.set(java.util.Calendar.MINUTE, 0);  
-	        CaLeNdAr.set(java.util.Calendar.SECOND, 0);  
-	        CaLeNdAr.set(java.util.Calendar.MILLISECOND, 0);
-			return CaLeNdAr.getTime();
+			calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);//modify the indentation,'CaLeNdAr' changed to 'calendar' 
+			calendar.set(java.util.Calendar.MINUTE, 0);  //modify the indentation,'CaLeNdAr' changed to 'calendar'
+			calendar.set(java.util.Calendar.SECOND, 0);  //modify the indentation,'CaLeNdAr' changed to 'calendar'
+			calendar.set(java.util.Calendar.MILLISECOND, 0);//modify the indentation,'CaLeNdAr' changed to 'calendar'
+			return calendar.getTime();//'CaLeNdAr' changed to 'calendar'
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
