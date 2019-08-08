@@ -5,7 +5,7 @@ public class FixBookControl {
 	private ControlState controlState;//'CONTROL_STATE' changed to 'ControlState','StAtE' changed to 'controlState'
 	
 	private library library;//'LIB' changed to 'library'
-	private book Cur_Book;
+	private Book book;//'book' changed to 'Book','Cur_Book' changed to 'book'
 
 
 	public FixBookControl() {
@@ -28,17 +28,17 @@ public class FixBookControl {
 		if (!controlState.equals(ControlState.READY)) {//'CONTROL_STATE' changed to 'ControlState','StAtE' changed to 'controlState'
 			throw new RuntimeException("FixBookControl: cannot call bookScanned except in READY state");
 		}	
-		Cur_Book = library.Book(bookId);//'LIB' changed to 'library'
+		book = library.Book(bookId);//'LIB' changed to 'library','Cur_Book' changed to 'book'
 		
-		if (Cur_Book == null) {
+		if (book == null) {//'Cur_Book' changed to 'book'
 			fixBookUi.display("Invalid bookId");//'UI' changed to 'fixBookUi'
 			return;
 		}
-		if (!Cur_Book.IS_Damaged()) {
+		if (!book.IS_Damaged()) {//'Cur_Book' changed to 'book'
 			fixBookUi.display("Book has not been damaged");//'UI' changed to 'fixBookUi'
 			return;
 		}
-		fixBookUi.display(Cur_Book.toString());//'UI' changed to 'fixBookUi'
+		fixBookUi.display(book.toString());//'UI' changed to 'fixBookUi',//'Cur_Book' changed to 'book'
 		fixBookUi.Set_State(FixBookUI.UI_STATE.FIXING);//'UI' changed to 'fixBookUi'
 		controlState = ControlState.FIXING;	//'CONTROL_STATE' changed to 'ControlState','StAtE' changed to 'controlState'	
 	}
@@ -49,9 +49,9 @@ public class FixBookControl {
 			throw new RuntimeException("FixBookControl: cannot call fixBook except in FIXING state");
 		}	
 		if (MUST_fix) {
-			library.Repair_BOOK(Cur_Book);//'LIB' changed to 'library'
+			library.Repair_BOOK(book);//'LIB' changed to 'library',//'Cur_Book' changed to 'book'
 		}
-		Cur_Book = null;
+		book = null;//'Cur_Book' changed to 'book'
 		fixBookUi.Set_State(FixBookUI.UI_STATE.READY);//'UI' changed to 'fixBookUi'
 		controlState = ControlState.READY;	//'CONTROL_STATE' changed to 'ControlState','StAtE' changed to 'controlState'	
 	}
