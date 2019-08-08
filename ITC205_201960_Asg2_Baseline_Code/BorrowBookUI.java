@@ -39,22 +39,22 @@ public class BorrowBookUI {
 		
 		while (true) {
 			
-			switch (StaTe) {			
+			switch (state) {//'StaTe' changed to'state'			
 			
 			case CANCELLED:
-				output("Borrowing Cancelled");
+				outputInfo("Borrowing Cancelled");//'output' changed to'outputInfo'
 				return;
 
 				
 			case READY:
-				String MEM_STR = input("Swipe member card (press <enter> to cancel): ");
-				if (MEM_STR.length() == 0) {
-					CONTROL.cancel();
+				String strMember = input("Swipe member card (press <enter> to cancel): ");//'MEM_STR' changed to'strMember'
+				if (strMember.length() == 0) {//'MEM_STR' changed to'strMember'
+					borrowBookControl.borrowCancel();//'CONTROL' changed to'borrowBookControl','cancel' changed to'borrowCancel'
 					break;
 				}
 				try {
-					int Member_ID = Integer.valueOf(MEM_STR).intValue();
-					CONTROL.Swiped(Member_ID);
+					int memberId = Integer.valueOf(strMember).intValue();//'Member_ID' changed to'memberId','MEM_STR' changed to'strMember'
+					borrowBookControl.cardSwiped(memberId);//'CONTROL' changed to'borrowBookControl','Swiped' changed to 'cardSwiped','Member_ID' changed to'memberId'
 				}
 				catch (NumberFormatException e) {
 					output("Invalid Member Id");
