@@ -97,12 +97,12 @@ public class BorrowBookUI {
 				
 				
 			case COMPLETED:
-				output("Borrowing Completed");
+				outputInfo("Borrowing Completed");//'output' changed to'outputInfo'
 				return;
 	
 				
 			default:
-				output("Unhandled state");
+				outputInfo("Unhandled state");//'output' changed to'outputInfo'
 				throw new RuntimeException("BorrowBookUI : unhandled state :" + StaTe);			
 			}
 		}		
