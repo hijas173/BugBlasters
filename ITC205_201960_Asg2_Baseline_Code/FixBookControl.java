@@ -24,22 +24,22 @@ public class FixBookControl {
 	}
 
 
-	public void Book_scanned(int bookId) {
+	public void bookScanned(int bookId) {//'Book_scanned' changed to 'bookScanned'
 		if (!controlState.equals(ControlState.READY)) {//'CONTROL_STATE' changed to 'ControlState','StAtE' changed to 'controlState'
 			throw new RuntimeException("FixBookControl: cannot call bookScanned except in READY state");
 		}	
-		book = library.Book(bookId);//'LIB' changed to 'library','Cur_Book' changed to 'book'
+		book = library.Book(bookId);//'LIB' changed to 'library','Cur_Book' changed to 'book','Book' changed to 'getBook'
 		
 		if (book == null) {//'Cur_Book' changed to 'book'
 			fixBookUi.display("Invalid bookId");//'UI' changed to 'fixBookUi'
 			return;
 		}
-		if (!book.IS_Damaged()) {//'Cur_Book' changed to 'book'
+		if (!book.isDamaged()) {//'Cur_Book' changed to 'book','IS_Damaged' changed to 'isDamaged'
 			fixBookUi.display("Book has not been damaged");//'UI' changed to 'fixBookUi'
 			return;
 		}
-		fixBookUi.display(book.toString());//'UI' changed to 'fixBookUi',//'Cur_Book' changed to 'book'
-		fixBookUi.Set_State(FixBookUI.UI_STATE.FIXING);//'UI' changed to 'fixBookUi'
+		fixBookUi.display(book.toString());//'UI' changed to 'fixBookUi','Cur_Book' changed to 'book'
+		fixBookUi.setState(fixBookUi.UiState.FIXING);//'UI' changed to 'fixBookUi','Set_State' changed to 'setState','FixBookUI' changed to 'fixBookUi','UI_STATE' changed to 'UiState'
 		controlState = ControlState.FIXING;	//'CONTROL_STATE' changed to 'ControlState','StAtE' changed to 'controlState'	
 	}
 
