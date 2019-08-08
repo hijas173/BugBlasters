@@ -28,7 +28,7 @@ public class BorrowBookControl {
 		}//add the consistent bracketing style
 			member = Library.getMember(memberId);//'M' changed to 'member','LIBRARY' changed to 'Library','MEMBER' changed to 'getMember','MEMMER_ID' changed to 'memberId'
 		if (member == null) {//'M' changed to 'member'
-			borrowBookUi.Display("Invalid memberId");//'UI' changed to 'borrowBookUi'
+			borrowBookUi.displayInfo("Invalid memberId");//'UI' changed to 'borrowBookUi','Display' changed to 'displayInfo'
 			return;
 		}
 		if (Library.memberCanBorrow(member)) {//'LIBRARY' changed to 'Library','MEMBER_CAN_BORROW' changed to 'memberCanBorrow','M' changed to 'member'
@@ -38,7 +38,7 @@ public class BorrowBookControl {
 		}// modify the consistent bracketing style
 		else 
 		{
-			borrowBookUi.Display("Member cannot borrow at this time");//'UI' changed to 'borrowBookUi'
+			borrowBookUi.displayInfo("Member cannot borrow at this time");//'UI' changed to 'borrowBookUi','Display' changed to 'displayInfo'
 			borrowBookUi.setState(BorrowBookUI.UiState.RESTRICTED); //'UI' changed to 'borrowBookUi','Set_State' changed to 'setState','UI_STATE' changed to 'UiState'
 		}
 	}//bracketing style keep consistent
@@ -49,19 +49,19 @@ public class BorrowBookControl {
 		}	
 		book = Library.getBook(bookId);//'BOOK' changed to 'book','LIBRARY' changed to 'Library','Book' changed to 'getBook'
 		if (book == null) {//'BOOK' changed to 'book'
-			borrowBookUi.Display("Invalid bookId");//'UI' changed to 'borrowBookUi'
+			borrowBookUi.displayInfo("Invalid bookId");//'UI' changed to 'borrowBookUi','Display' changed to 'displayInfo'
 			return;
 		}
 		if (!book.idAvailable()) {//'BOOK' changed to 'book','AVAILABLE' changed to 'idAvailable'
-			borrowBookUi.Display("Book cannot be borrowed");//'UI' changed to 'borrowBookUi'
+			borrowBookUi.displayInfo("Book cannot be borrowed");//'UI' changed to 'borrowBookUi','Display' changed to 'displayInfo'
 			return;
 		}
 		pendingBooks.add(book);//'PENDING' changed to 'pendingBooks','BOOK' changed to 'book'
 		for (book item : pendingBooks) {//'PENDING' changed to 'pendingBooks','B' changed to 'item'
-			borrowBookUi.Display(item.toString());//'UI' changed to 'borrowBookUi','B' changed to 'item'
+			borrowBookUi.displayInfo(item.toString());//'UI' changed to 'borrowBookUi','B' changed to 'item','Display' changed to 'displayInfo'
 		}
 		if (Library.loansRemainingForMember(member) - pendingBooks.size() == 0) {//'LIBRARY' changed to 'Library','Loans_Remaining_For_Member' changed to 'loansRemainingForMember','M' changed to 'member','PENDING' changed to 'pendingBooks'
-			borrowBookUi.Display("Loan limit reached");//'UI' changed to 'borrowBookUi'
+			borrowBookUi.displayInfo("Loan limit reached");//'UI' changed to 'borrowBookUi','Display' changed to 'displayInfo'
 			borrowComplete();//'Complete' changed to 'borrowComplete'
 		}
 	}
@@ -70,9 +70,9 @@ public class BorrowBookControl {
 			borrowCancel();//'cancel' changed to 'borrowCancel'
 		}
 		else {
-			borrowBookUi.Display("\nFinal Borrowing List");//'UI' changed to 'borrowBookUi'
+			borrowBookUi.displayInfo("\nFinal Borrowing List");//'UI' changed to 'borrowBookUi','Display' changed to 'displayInfo'
 			for (book bookItem : pendingBooks) {//'PENDING' changed to 'pendingBooks','B' changed to 'bookItem'
-				borrowBookUi.Display(bookItem.toString());//'UI' changed to 'borrowBookUi','B' changed to 'bookItem'
+				borrowBookUi.displayInfo(bookItem.toString());//'UI' changed to 'borrowBookUi','B' changed to 'bookItem','Display' changed to 'displayInfo'
 			}
 			completedBooks = new ArrayList<loan>();//'COMPLETED' changed to 'completedBooks'
 			borrowBookUi.setState(BorrowBookUI.UiState.FINALISING);//'UI' changed to 'borrowBookUi','Set_State' changed to 'setState','UI_STATE' changed to 'UiState'
@@ -84,12 +84,12 @@ public class BorrowBookControl {
 			throw new RuntimeException("BorrowBookControl: cannot call commitLoans except in FINALISING state");
 		}	
 		for (book bookItem : pendingBooks) {//'PENDING' changed to 'pendingBooks','B' changed to 'bookItem'
-			Loan loan = LIBRARY.issueLoan(bookItem, member);//'loan' changed to 'Loan','LOAN' changed to 'loan','LIBRARY' changed to 'Library','ISSUE_LAON' changed to 'issueLoan','B' changed to 'bookItem','M' changed to 'member'
+			Loan loan = Library.issueLoan(bookItem, member);//'loan' changed to 'Loan','LOAN' changed to 'loan','LIBRARY' changed to 'Library','ISSUE_LAON' changed to 'issueLoan','B' changed to 'bookItem','M' changed to 'member'
 			completedBooks.add(loan);//'COMPLETED' changed to 'completedBooks'			
 		}
-		borrowBookUi.Display("Completed Loan Slip");//'UI' changed to 'borrowBookUi'
+		borrowBookUi.displayInfo("Completed Loan Slip");//'UI' changed to 'borrowBookUi','Display' changed to 'displayInfo'
 		for (Loan itemLoan : completedBooks) {//'loan' changed to 'Loan','LOAN' changed to 'itemLoan','COMPLETED' changed to 'completedBooks'
-			borrowBookUi.Display(itemLoan.toString());//'UI' changed to 'borrowBookUi'
+			borrowBookUi.displayInfo(itemLoan.toString());//'UI' changed to 'borrowBookUi','Display' changed to 'displayInfo'
 		}
 		borrowBookUi.setState(BorrowBookUI.UiState.COMPLETED);//'UI' changed to 'borrowBookUi','Set_State' changed to 'setState','UI_STATE' changed to 'UiState'
 		controlState = ControlState.COMPLETED;//'State' changed to 'controlState','CONTROL_STATE' changed to 'ControlState'
