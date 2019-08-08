@@ -14,12 +14,12 @@ public class FixBookControl {
 	}
 	
 	
-	public void Set_Ui(FixBookUI ui) {
+	public void setUI(FixBookUI fixBookUI) {//'Set_Ui' changed to 'setUI','ui' changed to 'fixBookUI'
 		if (!controlState.equals(ControlState.INITIALISED)) {//'CONTROL_STATE' changed to 'ControlState','StAtE' changed to 'controlState'
 			throw new RuntimeException("FixBookControl: cannot call setUI except in INITIALISED state");
 		}	
-		this.fixBookUi = ui;//'UI' changed to 'fixBookUi'
-		ui.Set_State(FixBookUI.UI_STATE.READY);
+		this.fixBookUi = fixBookUI;//'UI' changed to 'fixBookUi','ui' changed to 'fixBookUI'
+		fixBookUI.Set_State(fixBookUi.UiState.READY);//'ui' changed to 'fixBookUI','Set_State' changed to 'setState','FixBookUI' changed to 'fixBookUi','UI_STATE' changed to 'UiState'
 		controlState = ControlState.READY;	//'CONTROL_STATE' changed to 'ControlState','StAtE' changed to 'controlState'	
 	}
 
