@@ -18,7 +18,7 @@ public class BorrowBookUI {
 	}
 
 	
-	private String input(String prompt) {
+	private String getInput(String prompt) {//'input' changed to'getInput'
 		System.out.print(prompt);
 		return input.nextLine();
 	}	
@@ -29,8 +29,8 @@ public class BorrowBookUI {
 	}
 	
 			
-	public void Set_State(UI_STATE STATE) {
-		this.StaTe = STATE;
+	public void setState(UiState state) {//'Set_State' changed to'setState','UI_STATE' changed to'UiState','STATE' changed to'state'
+		this.StaTe = state;//'StaTe' changed to'state','STATE' changed to'state'
 	}
 
 	
