@@ -24,7 +24,7 @@ public class BorrowBookUI {
 	}	
 		
 		
-	private void output(Object object) {
+	private void outputInfo(Object object) {//'output' changed to'outputInfo'
 		System.out.println(object);
 	}
 	
@@ -35,7 +35,7 @@ public class BorrowBookUI {
 
 	
 	public void run() {
-		output("Borrow Book Use Case UI\n");
+		outputInfo("Borrow Book Use Case UI\n");//'output' changed to'outputInfo'
 		
 		while (true) {
 			
