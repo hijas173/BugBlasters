@@ -109,8 +109,8 @@ public class BorrowBookUI {
 	}
 
 
-	public void Display(Object object) {
-		output(object);		
+	public void displayInfo(Object object) {   //'Display' changed to'displayInfo'
+		outputInfo(object);		//'output' changed to'outputInfo'
 	}
 
 
