@@ -69,7 +69,7 @@ public class BorrowBookUI {
 			
 				
 			case SCANNING:
-				String strBook = getInput("Scan Book (<enter> completes): ");////'Book_Str' changed to'strBook','input' changed to'getInput'
+				String strBook = getInput("Scan Book (<enter> completes): ");//'Book_Str' changed to'strBook','input' changed to'getInput'
 				if (strBook.length() == 0) {//'Book_Str' changed to'strBook'
 					borrowBookControl.borrowComplete();//'CONTROL' changed to'borrowBookControl','Complete' changed to 'borrowComplete'
 					break;
@@ -85,13 +85,13 @@ public class BorrowBookUI {
 					
 				
 			case FINALISING:
-				String Ans = input("Commit loans? (Y/N): ");
-				if (Ans.toUpperCase().equals("N")) {
-					CONTROL.cancel();
+				String answer = getInput("Commit loans? (Y/N): ");//'Ans' changed to'answer','input' changed to'getInput'
+				if (answer.toUpperCase().equals("N")) {//'Ans' changed to'answer'
+					borrowBookControl.borrowCancel();//'CONTROL' changed to'borrowBookControl','cancel' changed to'borrowCancel'
 					
 				} else {
-					CONTROL.Commit_LOans();
-					input("Press <any key> to complete ");
+					borrowBookControl.commitLoans();//'CONTROL' changed to'borrowBookControl','Commit_LOans' changed to'commitLoans'
+					getInput("Press <any key> to complete ");//'input' changed to'getInput'
 				}
 				break;
 				
