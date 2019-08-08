@@ -57,29 +57,29 @@ public class BorrowBookUI {
 					borrowBookControl.cardSwiped(memberId);//'CONTROL' changed to'borrowBookControl','Swiped' changed to 'cardSwiped','Member_ID' changed to'memberId'
 				}
 				catch (NumberFormatException e) {
-					output("Invalid Member Id");
+					outputInfo("Invalid Member Id");//'output' changed to'outputInfo'
 				}
 				break;
 
 				
 			case RESTRICTED:
-				input("Press <any key> to cancel");
-				CONTROL.cancel();
+				getInput("Press <any key> to cancel");//'input' changed to'getInput'
+				borrowBookControl.borrowCancel();//'CONTROL' changed to'borrowBookControl','cancel' changed to'borrowCancel'
 				break;
 			
 				
 			case SCANNING:
-				String Book_Str = input("Scan Book (<enter> completes): ");
-				if (Book_Str.length() == 0) {
-					CONTROL.Complete();
+				String strBook = getInput("Scan Book (<enter> completes): ");////'Book_Str' changed to'strBook','input' changed to'getInput'
+				if (strBook.length() == 0) {//'Book_Str' changed to'strBook'
+					borrowBookControl.borrowComplete();//'CONTROL' changed to'borrowBookControl','Complete' changed to 'borrowComplete'
 					break;
 				}
 				try {
-					int BiD = Integer.valueOf(Book_Str).intValue();
-					CONTROL.Scanned(BiD);
+					int bookId = Integer.valueOf(strBook).intValue();//'BiD' changed to'bookId',//'Book_Str' changed to'strBook'
+					borrowBookControl.Scanned(bookId);//'CONTROL' changed to'borrowBookControl','BiD' changed to'bookId'
 					
 				} catch (NumberFormatException e) {
-					output("Invalid Book Id");
+					outputInfo("Invalid Book Id");//'output' changed to'outputInfo'
 				} 
 				break;
 					
