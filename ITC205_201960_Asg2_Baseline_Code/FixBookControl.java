@@ -9,7 +9,7 @@ public class FixBookControl {
 
 
 	public FixBookControl() {
-		this.library = library.INSTANCE();//'LIB' changed to 'library'
+		this.library = library.getInstance();//'LIB' changed to 'library','INSTANCE' changed to 'getInstance'
 		controlState = ControlState.INITIALISED;//'CONTROL_STATE' changed to 'ControlState','StAtE' changed to 'controlState'
 	}
 	
