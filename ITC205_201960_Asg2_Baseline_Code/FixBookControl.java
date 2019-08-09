@@ -48,16 +48,16 @@ public class FixBookControl {
 		if (!controlState.equals(ControlState.FIXING)) {//'CONTROL_STATE' changed to 'ControlState','StAtE' changed to 'controlState'
 			throw new RuntimeException("FixBookControl: cannot call fixBook except in FIXING state");
 		}	
-		if (MUST_fix) {
+		if (isMustFix) {//'MUST_fix' changed to 'isMustFix'
 			library.Repair_BOOK(book);//'LIB' changed to 'library',//'Cur_Book' changed to 'book'
 		}
 		book = null;//'Cur_Book' changed to 'book'
-		fixBookUi.Set_State(FixBookUI.UI_STATE.READY);//'UI' changed to 'fixBookUi'
+		fixBookUi.Set_State(FixBookUI.a.READY);//'UI' changed to 'fixBookUi'
 		controlState = ControlState.READY;	//'CONTROL_STATE' changed to 'ControlState','StAtE' changed to 'controlState'	
 	}
 
 	
-	public void SCannING_COMplete() {
+	public void scanningComplete() {//'SCannING_COMplete' changed to 'scanningComplete'
 		if (!controlState.equals(ControlState.READY)) {//'CONTROL_STATE' changed to 'ControlState','StAtE' changed to 'controlState'
 			throw new RuntimeException("FixBookControl: cannot call scanningComplete except in READY state");
 		}	
