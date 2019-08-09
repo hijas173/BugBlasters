@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 public class BorrowBookUI {
 	
 	public static enum UIState {INITIALISED, READY, RESTRICTED, SCANNING, IDENTIFIED, FINALISING, COMPLETED, CANCELLED};//'UI_STATE' changed to'UIState'
@@ -9,7 +8,6 @@ public class BorrowBookUI {
 	private Scanner input;
 	private UiState uiState;//'UI_STATE' changed to'UiState','StaTe' changed to'uiState',
 
-	
 	public BorrowBookUI(BorrowBookControl control) {
 		this.borrowBookControl = control;//'CONTROL' changed to'borrowBookControl'
 		input = new Scanner(System.in);
@@ -17,23 +15,19 @@ public class BorrowBookUI {
 		control.setUI(this);
 	}
 
-	
 	private String getInput(String prompt) {//'input' changed to'getInput'
 		System.out.print(prompt);
 		return input.nextLine();
 	}	
 		
-		
 	private void outputInfo(Object object) {//'output' changed to'outputInfo'
 		System.out.println(object);
 	}
 	
-			
 	public void setState(UiState state) {//'Set_State' changed to'setState','UI_STATE' changed to'UiState','STATE' changed to'state'
 		this.StaTe = state;//'StaTe' changed to'state','STATE' changed to'state'
 	}
 
-	
 	public void run() {
 		outputInfo("Borrow Book Use Case UI\n");//'output' changed to'outputInfo'
 		
@@ -44,7 +38,6 @@ public class BorrowBookUI {
 			case CANCELLED:
 				outputInfo("Borrowing Cancelled");//'output' changed to'outputInfo'
 				return;
-
 				
 			case READY:
 				String strMember = input("Swipe member card (press <enter> to cancel): ");//'MEM_STR' changed to'strMember'
@@ -60,13 +53,11 @@ public class BorrowBookUI {
 					outputInfo("Invalid Member Id");//'output' changed to'outputInfo'
 				}
 				break;
-
 				
 			case RESTRICTED:
 				getInput("Press <any key> to cancel");//'input' changed to'getInput'
 				borrowBookControl.borrowCancel();//'CONTROL' changed to'borrowBookControl','cancel' changed to'borrowCancel'
 				break;
-			
 				
 			case SCANNING:
 				String strBook = getInput("Scan Book (<enter> completes): ");//'Book_Str' changed to'strBook','input' changed to'getInput'
@@ -81,8 +72,7 @@ public class BorrowBookUI {
 				} catch (NumberFormatException e) {
 					outputInfo("Invalid Book Id");//'output' changed to'outputInfo'
 				} 
-				break;
-					
+				break;		
 				
 			case FINALISING:
 				String answer = getInput("Commit loans? (Y/N): ");//'Ans' changed to'answer','input' changed to'getInput'
@@ -95,11 +85,9 @@ public class BorrowBookUI {
 				}
 				break;
 				
-				
 			case COMPLETED:
 				outputInfo("Borrowing Completed");//'output' changed to'outputInfo'
 				return;
-	
 				
 			default:
 				outputInfo("Unhandled state");//'output' changed to'outputInfo'
@@ -108,10 +96,8 @@ public class BorrowBookUI {
 		}		
 	}
 
-
 	public void displayInfo(Object object) {   //'Display' changed to'displayInfo'
 		outputInfo(object);		//'output' changed to'outputInfo'
 	}
-
 
 }
