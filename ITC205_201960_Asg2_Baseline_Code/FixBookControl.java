@@ -44,7 +44,7 @@ public class FixBookControl {
 	}
 
 
-	public void FIX_Book(boolean MUST_fix) {
+	public void fixBook(boolean isMustFix) {//'FIX_Book' changed to 'fixBook','MUST_fix' changed to 'isMustFix'
 		if (!controlState.equals(ControlState.FIXING)) {//'CONTROL_STATE' changed to 'ControlState','StAtE' changed to 'controlState'
 			throw new RuntimeException("FixBookControl: cannot call fixBook except in FIXING state");
 		}	
