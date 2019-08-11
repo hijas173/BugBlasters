@@ -6,21 +6,21 @@ public class PayFineUI {
 
 	public static enum UiState { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };//UI_STATE IS CHANGED TO UiState
 
-	private payFineControl control;//PayFineControl is changed to payFineControl and coNtRoL is changed to control
-	private scanner input;//Scanner is changed to scanner
-	private uiState state;//UI_STATE is changed to uiState and StAtE is changed to state
+	private PayFineControl control;//coNtRoL is changed to control
+	private Scanner input;
+	private UiState state;//StAtE is changed to state
 
 	
-	public payFineUI(payFineControl control) { //PayFineUI is changed to payFineUi and PayFineControl is changed to payFineControl
-		this.control = Control;//CoNtRoL is changed to control and control is changed to Control
+	public payFineUI(PayFineControl control) { //PayFineUI is changed to payFineUi and PayFineControl is changed to PayFineControl
+		this.control = control;//CoNtRoL is changed to control and control is changed to control
 		input = new Scanner(System.in);
-		state = uiState.INITIALISED;//StAtE is changed to state and UI_STATE is changed to uiState
+		state = UiState.INITIALISED;//StAtE is changed to state and UI_STATE is changed to UiState
 		control.setUi(this);//Set_UI is changed to setUi
 	}
 	
 	
-	public void setState(uiState state) { /Set_State is changed to setState and UI_STATE is changed to uiState 
-		this.state = State; //State is changed to state and state is changed to State 
+	public void setState(UiState state) { //Set_State is changed to setState and UI_STATE is changed to UiState 
+		this.state = state; //State is changed to state and state is changed to state 
 	}
 
 
@@ -32,8 +32,8 @@ public class PayFineUI {
 			switch (state) { //StAtE is changed to state
 			
 			case READY:
-			      String memStr = input("Swipe member card (press <enter> to cancel): "); //Mem_Str is changed to memStr
-				if (memStr.length() == 0) { //Mem_Str is changed to memStr
+			      String memberString = input("Swipe member card (press <enter> to cancel): "); //Mem_Str is changed to memberString
+				if (memberString.length() == 0) { //Mem_Str is changed to memberString
 					control.cancel();//CoNtRoL is changed to control and CaNcEl is changed to cancel
 					break;
 				}
@@ -47,10 +47,10 @@ public class PayFineUI {
 				break;
 				
 			case PAYING:
-				double amount = 0; /AmouNT is changed to amount
-				String amtStr = input("Enter amount (<Enter> cancels) : "); //Amt_Str is changed to amtStr
-				if (amtStr.length() == 0) { //Amt_Str is changed to amtStr
-					CoNtRoL.CaNcEl();//CoNtRoL is changed to control and CaNcEl is changed to cancel 
+				double amount = 0; //AmouNT is changed to amount
+				String amountString = input("Enter amount (<Enter> cancels) : "); //Amt_Str is changed to amountString
+				if (amountString.length() == 0) { //Amt_Str is changed to amountString
+					control.cancel();//CoNtRoL is changed to control and CaNcEl is changed to cancel 
 					break;
 				}
 				try {
@@ -74,7 +74,7 @@ public class PayFineUI {
 			
 			default:
 				output("Unhandled state");
-				throw new RuntimeException("FixBookUI : unhandled state :" + StAtE);			
+				throw new RuntimeException("FixBookUI : unhandled state :" + State);//StAtE is changed to state			
 			
 			}		
 		}		
