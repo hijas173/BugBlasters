@@ -11,7 +11,7 @@ public class ReturnBookUi { //ReturnBookUI is changed to ReturnBookUi
 
 	
 	public returnBookUi(ReturnBookControl control) { //ReturnBookUi is changed to returnBookUi
-		this.control = Control; //CoNtRoL is changed to control and control is changed to Control
+		this.control = control; //CoNtRoL is changed to control and control is changed to control
 		input = new Scanner(System.in);
 		State = UiState.INITIALISED;//StATe is changed to state and UI_STATE is changed to UiState
 		control.setUi(this);//Set_UI is changed to setUi
@@ -45,9 +45,9 @@ public class ReturnBookUi { //ReturnBookUI is changed to ReturnBookUi
 				break;				
 				
 			case INSPECTING:
-				String ans = input("Is book damaged? (Y/N): ");
+				String answer = input("Is book damaged? (Y/N): ");//ans is changed to answer
 				boolean isDamaged = false; //Is_Damaged is changed to isDamaged
-				if (ans.toUpperCase().equals("Y")) {					
+				if (answer.toUpperCase().equals("Y")) { //ans.toUpperCase is changed to answer.toUpperCase()					
 					isDamaged = true;//Is_Damaged is changed to isDamaged
 				}
                                 control.dischargeLoan(isDamaged); //CoNtRoL.Discharge_loan(Is_Damaged) is changed to control.dischargeLoan(isDamaged)
@@ -80,7 +80,7 @@ public class ReturnBookUi { //ReturnBookUI is changed to ReturnBookUi
 	}
 	
 	public void setState(UiState state) { //Set_State is changed to setState,UI_STATE is changed to UiState
-		this.state = State; //this.StATe = state is changed to this.state = State 
+		this.state = state; //this.StATe = state is changed to this.state = state 
 	}
 
 	
