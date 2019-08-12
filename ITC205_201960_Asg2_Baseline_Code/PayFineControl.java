@@ -8,8 +8,8 @@ public class PayFineControl {
 	private Member member; //member is changed to Member and MeMbEr is changed to member
 
 
-	public PayFineControl() { /PayFineControl is changed to payFineControl
-		this.library = LIBRARY.INSTANCE(); //LiBrArY is changed to library and LiBrArY is changed to LIBRARY
+	public payFineControl() { /PayFineControl is changed to payFineControl
+		this.library = Library.getInstance(); //LiBrArY is changed to library and LiBrArY.INSTANCE() is changed to Library.getInstance()
 		state = ControlState.INITIALISED;//StAtE is changed to state and CONTROL_STATE IS CHANGED TO ControlState
 	}
 	
@@ -18,7 +18,7 @@ public class PayFineControl {
 		if (!state.equals(ControlState.INITIALISED)) { //StAtE is changed to state and CONTROL_STATE IS CHANGED TO ControlState
 			throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state");
 		}	
-		this.ui = Ui; //Ui is changed to ui and ui is changed to Ui
+		this.ui = ui; //Ui is changed to ui and ui is changed to ui
 		ui.setState(PayFineUi.uiState.READY);//Set_State is changed to setState,PayFineUI is changed to PayFineUi and UI_STATE is changed to uiState 
 		state = ControlState.READY; //StAtE is changed to state and CONTROL_STATE is changed to CONTROL_STATE is changed to ControlState		
 	}
@@ -41,7 +41,7 @@ public class PayFineControl {
 	
 	
 	public void cancel() { //CaNcEl is changed to cancel
-		Ui.setState(PayFineUi.uiState.CANCELLED);//Ui.Set_State is changed to ui.setState,PayFineUI.UI_STATE is changed to PayFineUi.uiState
+		ui.setState(PayFineUi.uiState.CANCELLED);//Ui.Set_State is changed to ui.setState,PayFineUI.UI_STATE is changed to PayFineUi.uiState
 		state = ControlState.CANCELLED;//StAtE is changed to state and CONTROL_STATE is changed to ControlState
 	}
 
