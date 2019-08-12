@@ -9,12 +9,12 @@ public class ReturnBookControl {
 	
 
 	public returnBookControl() { //ReturnBookControl is changed to returnBookControl
-		this.library = Library.INSTANCE();//lIbRaRy is changed to library and lIbRaRy is changed to Library
+		this.library = Library.getInstance();//lIbRaRy is changed to library and lIbRaRy.INSTANCE is changed to Library.getInstance
 		state = ControlState.INITIALISED;//sTaTe is changed to state and CONTROL_STATE is changed to ControlState
 	}
 	
 	
-	public void setUi(ReturnBookUI ui) { //Set_UI is changed to setUi and ReturnBookUI is changed ReturnBookUi
+	public void setUi(ReturnBookUi ui) { //Set_UI is changed to setUi and ReturnBookUI is changed ReturnBookUi
 		if (!state.equals(ControlState.INITIALISED)) {  //sTaTe is changed to state CONTROL_STATE is changed to ControlState
 			throw new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");
 		}	
@@ -28,7 +28,7 @@ public class ReturnBookControl {
 		if (!state.equals(ControlState.READY)) { //sTaTe is changed to state and CONTROL_STATE is changed to ControlState
 			throw new RuntimeException("ReturnBookControl: cannot call bookScanned except in READY state");
 		}	
-		book CUR_book = Library.book(bookId); //CUR_book is changed to curBook,lIbRaRy.Book is changed to Library.book and Book_ID is changed to bookId 
+		book curBook = Library.getBook(bookId); //CUR_book is changed to curBook,lIbRaRy.Book is changed to Library.getBook and Book_ID is changed to bookId 
 		
 		if (curBook == null) { //CUR_book is changed to curBook
 			ui.display("Invalid Book Id"); //Ui is changed to ui
@@ -41,7 +41,7 @@ public class ReturnBookControl {
 		currentLoan = Library.loanByBookId(bookId); //CurrENT_loan is changed to currentLoan and lIbRaRy.LOAN_BY_BOOK_ID(Book_ID) is changed to Library.loanByBookId(bookId	
 		double overDueFine = 0.0; //Over_Due_Fine is changed to overDueFine
 		if (currentLoan.overDue()) {  //CurrENT_loan is changed to currentLoan and OVer_Due is changed to overDue
-			 overDueFine = lIbRaRy.CalculateOverDueFine(CurrENT_loan);  //Over_Due_Fine is changed to overDueFine and lIbRaRy.CalculateOverDueFine(CurrENT_loan) is changed to Library.calculateOverDueFine(currentLoan)
+			 overDueFine = Library.calculateOverDueFine(currentLoan);  //Over_Due_Fine is changed to overDueFine and lIbRaRy.CalculateOverDueFine(CurrENT_loan) is changed to Library.calculateOverDueFine(currentLoan)
 		}
 		ui.display("Inspecting");//Ui is changed to ui
 		ui.display(curBook.toString());//Ui is changed to ui and CUR_book is changed to curBook
